@@ -12,7 +12,7 @@ node ('slave1') {
   stage('post') {
     if ( currentBuild.result == 'SUCCESS') {
     addBadge(icon: 'success.gif', text: 'Success')
-  }
+    }
     if (currentBuild.result == 'FAILURE') {
     addBadge(icon: 'error.gif', text: 'Fail')
   } 
