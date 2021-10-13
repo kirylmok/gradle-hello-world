@@ -6,6 +6,6 @@ node ('slave1') {
   
   stage ('Build') {
     def gradleHome = tool 'gradle4'
-    sh "${gradleHome}/bin/gradle gradlew build"
+    sh "${gradleHome}/bin/gradle gradle clean build"
   }
 }
