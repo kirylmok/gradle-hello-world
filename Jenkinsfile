@@ -17,3 +17,4 @@ node ('slave1') {
     addBadge(icon: 'error.gif', text: 'Fail')
     } 
   }
+}
