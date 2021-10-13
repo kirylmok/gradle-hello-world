@@ -10,11 +10,11 @@ node ('slave1') {
   }
   
   stage('post') {
-    echo "Build status: " + currentBuild.result
-    if ( currentBuild.result == 'SUCCESS') {
+    echo "Build status: " + currentBuild.currentResult
+    if ( currentBuild.currentResult == 'SUCCESS') {
     addBadge(icon: 'success.gif', text: 'Success')
     }
-    else if (currentBuild.result == 'FAILURE') {
+    else if (currentBuild.currentResult == 'FAILURE') {
     addBadge(icon: 'error.gif', text: 'Fail')
     } 
   }
