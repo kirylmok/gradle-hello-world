@@ -16,4 +16,4 @@ node ('slave1') {
     else if (currentBuild.result == 'FAILURE') {
     addBadge(icon: 'error.gif', text: 'Fail')
     } 
-}
+  }
