@@ -1,12 +1,17 @@
 node ('slave1') {
+  currentBuild.currentResult = "Success"
+  try {
+    stage ('Checkout') {
+      checkout scm
+    }
   
-  stage ('Checkout') {
-    checkout scm
-  }
-  
-  stage ('Build') {
-    def gradleHome = tool 'gradle4'
-    sh "${gradleHome}/bin/gradle build"
+    stage ('Build') {
+      def gradleHome = tool 'gradle4'
+      sh "${gradleHome}/bin/gradle build"
+    }
+  } catch (ex) {
+    currentBuild.currentResult = "FAILURE"
+    echo 'Error'
   }
   
   stage('post') {
