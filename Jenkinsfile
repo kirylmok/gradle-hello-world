@@ -8,4 +8,12 @@ node ('slave1') {
     def gradleHome = tool 'gradle4'
     sh "${gradleHome}/bin/gradle build"
   }
+  
+  stage('post') {
+    if ( currentBuild.result == 'SUCCESS') {
+    addBadge(icon: 'success.gif', text: 'Success')
+  }
+    if (currentBuild.result == 'FAILURE') {
+    addBadge(icon: 'error.gif', text: 'Fail')
+  } 
 }
