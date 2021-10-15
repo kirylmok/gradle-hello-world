@@ -20,15 +20,19 @@ pipeline {
 
     post {
       success {
-        echo "Build status: " + currentBuild.result
-        if ( currentBuild.result == 'SUCCESS') {
-        addBadge(icon: 'success.gif', text: 'Success')
+        steps {
+          echo "Build status: " + currentBuild.result
+          if ( currentBuild.result == 'SUCCESS') {
+          addBadge(icon: 'success.gif', text: 'Success')
+          }
         }
       }
       failure {
-        if (currentBuild.result == 'FAILURE') {
-        addBadge(icon: 'error.gif', text: 'Fail')
-        } 
+        steps {
+          if (currentBuild.result == 'FAILURE') {
+          addBadge(icon: 'error.gif', text: 'Fail')
+          }
+        }
       }
   }
 }
