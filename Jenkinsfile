@@ -14,7 +14,7 @@ pipeline {
       stage ('call gradle'){
             steps {
                echo "Path is" + env.PATH
-               sh "gradle --version" 
+               sh "gradle build" 
             }
         }
   }
