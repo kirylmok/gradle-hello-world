@@ -1,25 +1,31 @@
-node ('slave1') {
-  currentBuild.result = "Success"
-  try {
-    stage ('Checkout') {
-      checkout scm
-    }
-    stage ('Build') {
-      def gradleHome = tool 'gradle4'
-      sh "${gradleHome}/bin/gradle build"
-    }
-  } catch (ex) {
-    currentBuild.result = "FAILURE"
-    echo 'Error'
+pipeline {
+  agent {
+    label 'slave1'
   }
-  
-  stage('post') {
-    echo "Build status: " + currentBuild.result
-    if ( currentBuild.result == 'SUCCESS') {
-    addBadge(icon: 'success.gif', text: 'Success')
+  stages {
+      stage ('Checkout') {
+        steps {
+          checkout scm
+        }
+      }
+      stage ('Build') {
+        steps {
+          def gradleHome = tool 'gradle4'
+          sh "${gradleHome}/bin/gradle build"
+        }
+      }
     }
-    else if (currentBuild.result == 'FAILURE') {
-    addBadge(icon: 'error.gif', text: 'Fail')
-    } 
-  }
+
+    post {
+      success {
+        echo "Build status: " + currentBuild.result
+        if ( currentBuild.result == 'SUCCESS') {
+        addBadge(icon: 'success.gif', text: 'Success')
+        }
+      }
+      failure {
+        if (currentBuild.result == 'FAILURE') {
+        addBadge(icon: 'error.gif', text: 'Fail')
+        } 
+      }
 }
