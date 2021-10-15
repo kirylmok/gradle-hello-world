@@ -14,6 +14,7 @@ pipeline {
           checkout scm
         }
       }
+    
       stage ('call gradle'){
             steps {
                echo "Path is" + env.PATH
@@ -26,6 +27,7 @@ pipeline {
       success {
           addBadge(icon: 'success.gif', text: 'Success')
       }
+      
       failure {
           addBadge(icon: 'error.gif', text: 'Fail')
       }
