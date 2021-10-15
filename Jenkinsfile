@@ -16,11 +16,11 @@ pipeline {
       }
     
       stage ('call gradle'){
-            steps {
-               echo "Path is" + env.PATH
-               sh "gradle build" 
-            }
+        steps {
+           echo "Path is" + env.PATH
+           sh "gradle build" 
         }
+      }
     }
 
     post {
