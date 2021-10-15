@@ -1,10 +1,13 @@
 pipeline {
+
   agent {
     label 'slave1'
   }
+
   tools {
     gradle 'gradle4'
   }
+
   stages {
       stage ('Checkout') {
         steps {
@@ -17,7 +20,7 @@ pipeline {
                sh "gradle build" 
             }
         }
-  }
+    }
 
     post {
       success {
@@ -26,5 +29,5 @@ pipeline {
       failure {
           addBadge(icon: 'error.gif', text: 'Fail')
       }
-  }
+    }
 }
