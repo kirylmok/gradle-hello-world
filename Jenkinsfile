@@ -28,4 +28,5 @@ pipeline {
         addBadge(icon: 'error.gif', text: 'Fail')
         } 
       }
+  }
 }
