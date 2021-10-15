@@ -20,7 +20,7 @@ pipeline {
 
     post {
       success {
-        steps {
+        script {
           echo "Build status: " + currentBuild.result
           if ( currentBuild.result == 'SUCCESS') {
           addBadge(icon: 'success.gif', text: 'Success')
@@ -28,7 +28,7 @@ pipeline {
         }
       }
       failure {
-        steps {
+        script {
           if (currentBuild.result == 'FAILURE') {
           addBadge(icon: 'error.gif', text: 'Fail')
           }
