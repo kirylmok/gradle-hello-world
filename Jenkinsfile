@@ -32,8 +32,8 @@ pipeline {
           tests = ["one" : { sh "test-data/int-test.shbuild/libs/oto-gradle-1.0.jar otoMato 'Hello Otomato!'"},
                   "two" : { sh "test-data/int-test.shbuild/libs/oto-gradle-1.0.jar kiRIll 'Hello Kirill!'"},
                   "three" : { sh "test-data/int-test.shbuild/libs/oto-gradle-1.0.jar pLAYtIKA 'Hello Playtika!'"}]
-          }
         }
+      }
     }
 
     post {
