@@ -11,11 +11,12 @@ pipeline {
           checkout scm
         }
       }
-      stage ('Build') {
-        steps {
-          sh "${gradleHome}/bin/gradle build"
+      stage ('call gradle'){
+            steps {
+               echo "Path is" + env.PATH
+               sh "gradle --version" 
+            }
         }
-      }
   }
 
     post {
