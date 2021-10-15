@@ -51,7 +51,7 @@ pipeline {
       }
       
       failure {
-          addBadge(icon: 'error.gif', text: 'Fail')
+          addBadge(icon: 'red.gif', text: 'Fail')
       }
     }
 }
